@@ -64,7 +64,6 @@ public class RoadGenerator : MonoBehaviour
     {
         yield return new WaitForSeconds(2.4f);
         speed = maxSpeed;
-        SwipeManager.instance.enabled = true;
     }
 
     public void ResetLevel()
