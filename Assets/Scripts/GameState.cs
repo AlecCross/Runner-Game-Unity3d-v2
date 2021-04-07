@@ -31,8 +31,6 @@ public class GameState : MonoBehaviour
     }
     IEnumerator StartCor()
     {
-        print("Start-SetTrigger(CurtainUp)");
-        curtainAnimator.SetTrigger("CurtainUp");
         yield return new WaitForSeconds(1f);
         print("Start-SetTrigger(CurtainHide)");
         curtainAnimator.SetTrigger("CurtainHide");

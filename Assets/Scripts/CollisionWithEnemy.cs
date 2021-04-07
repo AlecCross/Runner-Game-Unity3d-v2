@@ -37,17 +37,20 @@ public class CollisionWithEnemy : MonoBehaviour
         }
         else if (health <= 0 && !gameState.gameover)
         {
-            print("Потрачено!");
+            FindObjectOfType<AudioManger>().StopAllAudio();
+            FindObjectOfType<AudioManger>().Play("GameOver");
             healthBar.text = "GameOver";
             gameState.gameover = true;
             health = maxHealth;
         }
-        if (scoreCount == 500)
+        if (scoreCount == 400 && !gameState.gameover)
         {
             if(HiScore.hiScore < scoreCount)
             {
                 HiScore.hiScore = scoreCount;
             }
+            FindObjectOfType<AudioManger>().StopAllAudio();
+            FindObjectOfType<AudioManger>().Play("Finish");
             SceneManager.LoadScene("VictoryScene");
         }
         //print("gameState.gameover " + gameState.gameover.ToString());

@@ -55,9 +55,17 @@ public class PlayerController : MonoBehaviour
     public void StartGame()
     {
         gameState.gameover = false;
-        animator.SetTrigger("Ready");
-        animator.SetTrigger("Run");
+        StartCoroutine(AnimStart());
         //RoadGenerator.instance.StartLevel();
+    }
+    IEnumerator AnimStart()
+    {
+        FindObjectOfType<AudioManger>().Play("Select");
+        animator.SetTrigger("Ready");
+        yield return new WaitForSeconds(1f); 
+        animator.SetTrigger("Run");
+        yield return new WaitForSeconds(1f);
+        FindObjectOfType<AudioManger>().Play("RunOnGrass");
     }
     public void ResetGame()
     {
