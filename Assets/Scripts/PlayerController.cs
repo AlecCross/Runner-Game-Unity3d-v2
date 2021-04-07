@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour
     GameState gameState;
     float laneOffset = 1f;
     float laneChangeSpeed = 15;
+    public CapsuleCollider capsuleCollider;
     void Start()
     {
         animator = GetComponent<Animator>();
@@ -41,6 +42,7 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space) && !gameState.gameover)
         {
             animator.SetTrigger("RunJump");
+            StartCoroutine(JunpCollider());
         }
         if (gameState.gameover)
         {
@@ -76,6 +78,12 @@ public class PlayerController : MonoBehaviour
         animator.SetTrigger("Laying");
         yield return new WaitForSeconds(1f);
         animator.SetTrigger("Idle");
+    }
+    IEnumerator JunpCollider()
+    {
+        capsuleCollider.enabled = false;
+        yield return new WaitForSeconds(1f);
+        capsuleCollider.enabled = true;
     }
     //IEnumerator LeftOffset()
     //{

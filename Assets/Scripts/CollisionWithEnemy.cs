@@ -42,7 +42,7 @@ public class CollisionWithEnemy : MonoBehaviour
             gameState.gameover = true;
             health = maxHealth;
         }
-        if (scoreCount == 50)
+        if (scoreCount == 500)
         {
             if(HiScore.hiScore < scoreCount)
             {
@@ -57,10 +57,12 @@ public class CollisionWithEnemy : MonoBehaviour
     }
     void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.name == "Ch43_nonPBR" && health > 0)
+        if (collision.gameObject.name == "default"
+            || collision.gameObject.name == "Flower_Gud_Final" 
+             && health > 0)
         {
             health--;
-            playerAnimator.SetTrigger("HitOnLeftOfHead");
+            //playerAnimator.SetTrigger("HitOnLeftOfHead");
             print("Столкновение " + gameObject.name + "теряет жизни " + health);
         }
         //else if (collision.gameObject.name == "Ch43_nonPBR" && health > 0)
